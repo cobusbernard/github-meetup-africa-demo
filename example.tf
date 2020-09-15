@@ -25,6 +25,6 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "Hello Github Africa"
+    Name = "Hello Github Africa new"
   }
 }
