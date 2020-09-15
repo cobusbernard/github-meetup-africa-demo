@@ -34,17 +34,9 @@ jobs:
         run: terraform plan -no-color -out=plan.out
         continue-on-error: true
 
-      - name: Terraform Plan Show
-        id: plan_show
-        if: github.event_name == 'pull_request'
-        run: terraform show -no-color plan.out
-        continue-on-error: true        
-
       - name: Add TF output to PR
         uses: actions/github-script@0.9.0
         if: github.event_name == 'pull_request'
-        env:
-          PLAN: "${{ steps.plan_show.outputs.stdout }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -52,9 +44,7 @@ jobs:
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
             <details><summary>Show Plan</summary>
-            \`\`\`
-            ${process.env.PLAN} 
-            \`\`\`
+            \`\`\`${{ steps.plan.outputs.stdout }\`\`\`
             </details>
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
               
