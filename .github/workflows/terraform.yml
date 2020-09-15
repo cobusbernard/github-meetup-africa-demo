@@ -40,7 +40,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            cat 
             const output = `Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
             
             #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
@@ -49,6 +48,7 @@ jobs:
             <details><summary>Show Plan</summary>
             \`\`\`${{ steps.plan.outputs.stdout }}\`\`\`
             </details>
+            echo 'The plan output is' ${{ steps.plan.outputs.stdout }}
               
             github.issues.createComment({
               issue_number: context.issue.number,
