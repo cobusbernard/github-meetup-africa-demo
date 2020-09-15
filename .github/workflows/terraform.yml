@@ -31,7 +31,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -out=plan.out
+        run: terraform plan -no-color
         continue-on-error: true
 
       - name: Add TF output to PR
