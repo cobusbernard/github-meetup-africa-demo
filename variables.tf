@@ -21,3 +21,7 @@ variable "private_subnets" {
 variable "public_subnets" {
   type = list
 }
+
+variable "env_name" {
+  type = string
+}
