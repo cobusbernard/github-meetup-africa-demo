@@ -3,7 +3,7 @@ terraform {
     organization = "cobusbernard"
 
     workspaces {
-      name = "GitHub-Africa-Meetup-${var.environment}"
+      name = "GitHub-Africa-Meetup-Prod"
     }
   }
 }

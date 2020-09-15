@@ -14,6 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get backend for current
+        run: bash cp backends/standard_backend.tf backend.tf
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
