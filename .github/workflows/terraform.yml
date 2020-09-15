@@ -14,6 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Get backend for current environment
+        run: cp backends/dev_backend.tf backend.tf
+
+      - name: Get variables for current environment
+        run: cp env_vars/dev.tfvars vars.auto.tfvars
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
